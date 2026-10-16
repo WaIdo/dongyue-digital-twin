@@ -64,7 +64,7 @@ menuToggle.addEventListener("click", () => { const isOpen = menuToggle.getAttrib
 navigation.querySelectorAll("a,button").forEach(link => link.addEventListener("click", closeMenu));
 document.addEventListener("keydown", event => { if (event.key === "Escape" && navigation.classList.contains("open")) { closeMenu(); menuToggle.focus(); } });
 document.addEventListener("click", event => { if (!event.target.closest(".site-header")) closeMenu(); });
-window.matchMedia("(min-width:681px)").addEventListener("change", event => { if (event.matches) closeMenu(); });
+window.matchMedia("(min-width:1051px)").addEventListener("change", event => { if (event.matches) closeMenu(); });
 
 const videoDialog = document.querySelector("#video-dialog");
 const video = document.querySelector("#demo-video");
@@ -116,7 +116,7 @@ reducedMotion.addEventListener("change", event => { if (event.matches) { motionW
 if ("IntersectionObserver" in window) {
   new IntersectionObserver(entries => { sceneVisible = entries[0].isIntersecting; syncHeroMotion(); }, {threshold: .08}).observe(heroMotion);
 } else { sceneVisible = true; syncHeroMotion(); }
-const tabOrientation = window.matchMedia("(max-width: 680px)");
+const tabOrientation = window.matchMedia("(max-width: 900px)");
 function updateTabOrientation() { document.querySelector(".capability-tabs").setAttribute("aria-orientation", tabOrientation.matches ? "horizontal" : "vertical"); }
 tabOrientation.addEventListener("change", updateTabOrientation);
 updateTabOrientation();
