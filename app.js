@@ -1,5 +1,12 @@
 "use strict";
 
+// Keep temporary release-cache parameters out of shared page addresses.
+const pageAddress = new URL(window.location.href);
+if (pageAddress.searchParams.has("v")) {
+  pageAddress.searchParams.delete("v");
+  window.history.replaceState(window.history.state, "", pageAddress.pathname + pageAddress.search + pageAddress.hash);
+}
+
 const capabilities = {
   overview: { image: "platform-overview.webp", alt: "三维厂区总览与设备信息面板的关联展示", kicker: "场景与对象", title: ["从厂区鸟瞰，", "定位设备。"], description: "以统一设备对象连接空间位置与业务数据。在三维场景中定位设备，在信息面板中查看状态，让现场与数据彼此对应。", items: ["厂区、装置、设备多层级浏览", "三维场景与 Web 面板双向联动", "设备定位与数字档案关联"] },
   process: { image: "process-twin.webp", alt: "热解车间内部的三维设备与绿色动态介质管网", kicker: "介质与管网", title: ["让管网里的流向，", "变得清晰可见。"], description: "将设备、管道和阀门组织在同一空间中，以颜色与动态流向展示不同介质的输送路径，连接工艺流程与三维场景。", items: ["原料液、产品油、蒸汽与冷却水分类呈现", "设备、管道、阀门的空间关联", "工艺流程与三维场景联动展示"] },
