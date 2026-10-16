@@ -102,9 +102,9 @@ h2 { margin-top: 24px; font-size: clamp(34px,3.3vw,49px); line-height: 1.3; font
 .content-kicker { display: block; font-size: var(--small-size); letter-spacing: 1px; color: var(--muted); line-height: 1.6; }
 .capability-copy h3 { font-size: 26px; line-height: 1.45; font-weight: 500; margin: 10px 0 20px; letter-spacing: -.6px; }
 .capability-copy p { color: var(--body-ink); font-size: var(--body-size); line-height: 1.9; }
-.capability-copy ul { list-style: none; margin: 18px 0 0; padding: 0; }
-.capability-copy li { font-size: 16px; line-height: 1.8; color: var(--muted); margin: 8px 0; display: flex; gap: 9px; }
-.capability-copy li:before { content: "/"; color: var(--muted); }
+.capability-copy ul { list-style: disc; margin: 20px 0 0; padding-inline-start: 1.1em; }
+.capability-copy li { font-size: 16px; line-height: 1.8; color: var(--muted); margin: 10px 0; padding-inline-start: 4px; }
+.capability-copy li::marker { color: var(--muted); font-size: .8em; }
 .text-link { display: inline-flex; align-items: center; gap: 25px; font-size: 16px; color: var(--muted); }
 .text-link:hover { color: var(--orange); }
 .text-link > span { font-size: 16px; }
