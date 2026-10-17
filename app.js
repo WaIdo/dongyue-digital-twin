@@ -29,7 +29,7 @@ const videoChapters = {
   process: { start: 193, title: "工艺流程" },
   pipes: { start: 211, title: "介质管网" },
   scada: { start: 200, title: "二维 SCADA" },
-  operations: { start: 219, title: "系统运维" },
+  operations: { start: 219, title: "运维界面" },
   ai: { start: 235, title: "智能分析" },
   mr: { start: 278, title: "MR 虚实交互" }
 };
@@ -102,13 +102,17 @@ const imageDialog = document.querySelector("#image-dialog");
 const dialogOpeners = new WeakMap();
 function openDialog(dialog) { dialogOpeners.set(dialog, document.activeElement); dialog.showModal(); document.body.classList.add("dialog-open"); document.querySelector("#hero-motion").pause(); }
 let pendingVideoStart = null;
+let requestedChapter = "full";
+let videoLoadFailed = false;
+const videoError = document.querySelector(".video-error");
 function playChapter(key = "full") {
-  const chapter = videoChapters[key] || videoChapters.full;
+  requestedChapter = Object.prototype.hasOwnProperty.call(videoChapters, key) ? key : "full";
+  const chapter = videoChapters[requestedChapter];
   pendingVideoStart = chapter.start;
   document.querySelector("#video-dialog-title").textContent = `东粤化学 · ${chapter.title}`;
   document.querySelector("#video-context").textContent = chapter.start ? `从 ${formatTime(chapter.start)} 开始 · 可继续观看后续演示` : "完整演示 · 05:16";
-  if (video.readyState >= 1) seekToChapter();
-  else video.load();
+  if (videoLoadFailed || video.error || video.readyState === 0) video.load();
+  else seekToChapter();
   // Request playback within the click gesture, including on mobile browsers.
   video.play().catch(() => { /* Native controls remain available. */ });
 }
@@ -141,8 +145,12 @@ document.querySelectorAll("dialog").forEach(dialog => {
     syncHeroMotion();
   });
 });
-video.addEventListener("error", () => { document.querySelector(".video-error").hidden = false; });
-video.addEventListener("loadeddata", () => { document.querySelector(".video-error").hidden = true; });
+function showVideoError() { videoLoadFailed = true; videoError.hidden = false; }
+video.addEventListener("error", showVideoError);
+video.querySelectorAll("source").forEach(source => source.addEventListener("error", showVideoError));
+video.addEventListener("loadstart", () => { videoLoadFailed = false; videoError.hidden = true; });
+video.addEventListener("loadeddata", () => { videoLoadFailed = false; videoError.hidden = true; });
+document.querySelector("#retry-video").addEventListener("click", () => playChapter(requestedChapter));
 function expandImage(source) {
   const image = document.querySelector("#expanded-image"); image.src = source.src; image.alt = source.alt;
   document.querySelector("#image-dialog-title").textContent = source.alt;

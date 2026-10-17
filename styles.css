@@ -12,6 +12,7 @@
   --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased;  font-size: 16px;  line-height: 1.6; }
 body.dialog-open { overflow: hidden; }
@@ -24,7 +25,7 @@ svg { flex-shrink: 0; }
 button:focus-visible, a:focus-visible, summary:focus-visible, [tabindex="0"]:focus-visible { outline: 2px solid var(--orange); outline-offset: 5px; }
 ::selection { background: #d5d9c7; color: var(--ink); }
 .container { width: min(1328px, calc(100% - 112px)); margin-inline: auto; }
-.site-header { position: sticky; top: 0; z-index: 30; height: 84px; background: rgba(242,241,237,.97); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.site-header { --header-height: 84px; position: sticky; top: 0; z-index: 30; height: var(--header-height); background: rgba(242,241,237,.97); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
 .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand-symbol { width: 34px; height: 34px; color: var(--ink); }
@@ -178,7 +179,9 @@ dialog::backdrop { background: #0f170ee8; backdrop-filter: blur(9px); }
 .close-dialog:hover { background: #37452c; }
 .video-dialog video { display: block; width: 100%; max-height: calc(100dvh - 160px); background: #000; }
 .dialog-note { padding: 13px 18px; font-size: var(--small-size); color: #c6cebe; }
-.video-error { padding: 15px 18px; font-size: 16px; }.video-error a { text-decoration: underline; }
+.video-error { padding: 15px 18px; font-size: 16px; line-height: 1.8; }
+.video-error a, .video-error button { text-decoration: underline; text-underline-offset: 3px; }
+.video-error button { min-height: 44px; padding: 0 6px; background: transparent; color: inherit; }
 .image-dialog { width: min(1440px,calc(100% - 36px)); }
 .image-dialog > img { width: 100%; max-height: calc(100dvh - 120px); object-fit: contain; background: #031724; }
 
@@ -213,14 +216,15 @@ dialog::backdrop { background: #0f170ee8; backdrop-filter: blur(9px); }
   .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
   nav { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 12px 36px 24px; background: var(--paper); border-bottom: 1px solid #929b89; gap: 0; align-items: stretch; }
-  nav.open { display: flex; flex-direction: column; }
+  nav.open { display: flex; flex-direction: column; max-height: calc(100dvh - var(--header-height)); overflow-y: auto; overscroll-behavior: contain; }
+  nav.open > * { flex-shrink: 0; }
   nav > a { padding: 16px 0; border-bottom: 1px solid var(--line); }
   nav > a.active:after { display: none; }
   nav .nav-cta { align-self: flex-start; margin-top: 18px; }
 }
 @media (max-width: 900px) {
   .container { width: calc(100% - 48px); }
-  .site-header { height: 80px; }
+  .site-header { --header-height: 80px; }
   nav { padding-inline: 24px; }
   .hero-intro { padding: 48px 0 36px; gap: 30px; }
   h1 { font-size: 49px; letter-spacing: -2px; }
@@ -256,7 +260,7 @@ dialog::backdrop { background: #0f170ee8; backdrop-filter: blur(9px); }
   :root { --body-size: 16px; }
   html { scroll-padding-top: 94px; }
   .container { width: calc(100% - 40px); }
-  .site-header { height: 76px; }
+  .site-header { --header-height: 76px; }
   .brand { gap: 9px; }
   .brand strong { font-size: 16px; }
   .brand small { font-size: var(--meta-size); letter-spacing: .3px; }
