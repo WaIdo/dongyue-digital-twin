@@ -1,0 +1,225 @@
+.lab-visual {
+  min-width: 0;
+  max-width: 100%;
+  margin: 0 0 24px;
+  padding: 20px;
+  border: 1px solid #c8d7e5;
+  background: #fff;
+  color: #182b3a;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.lab-visual .lab-visual-title {
+  margin: 0 0 16px;
+  color: #003d78;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.lab-visual .lab-visual-note {
+  margin: 16px 0 0;
+  color: #40566b;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.lab-visual-state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+.lab-status-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #d7e0e8;
+  background: #f7f9fb;
+}
+.lab-status-card .lab-status-time {
+  margin: 0 0 12px;
+  color: #40566b;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.lab-status-card .lab-status-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 16px;
+  color: #182b3a;
+  font-size: 20px;
+  line-height: 1.35;
+}
+.lab-status-dot {
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #003d78;
+  box-shadow: 0 0 0 3px #fff;
+}
+.lab-status-dot-green {
+  background: #186448;
+}
+.lab-status-dot-red {
+  background: #aa342e;
+}
+.lab-status-dot-gray {
+  background: #657481;
+}
+.lab-status-facts {
+  margin: 0;
+  font-size: 16px;
+}
+.lab-status-facts > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 10px;
+}
+.lab-status-facts > div + div {
+  margin-top: 7px;
+}
+.lab-status-facts dt {
+  color: #40566b;
+}
+.lab-status-facts dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.lab-visual-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+.lab-visual-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.lab-visual-swatch {
+  width: 26px;
+  flex: 0 0 26px;
+  border-top: 3px solid #003d78;
+}
+.lab-visual-swatch-alarm {
+  border-top-color: #aa342e;
+  border-top-style: dashed;
+}
+.lab-visual-swatch-recovery {
+  border-top-color: #186448;
+  border-top-style: dotted;
+}
+.lab-visual-chart-scroll {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-color: #647e96 #eaf1f7;
+}
+.lab-visual-chart-scroll:focus-visible {
+  outline: 3px solid #003d78;
+  outline-offset: 3px;
+}
+.lab-visual-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  font-family: inherit;
+  font-size: 16px;
+}
+.lab-chart-gridline {
+  stroke: #dbe3eb;
+  stroke-width: 1;
+}
+.lab-chart-axis {
+  stroke: #6b7e90;
+  stroke-width: 1;
+}
+.lab-chart-tick {
+  fill: #40566b;
+  font-size: 16px;
+}
+.lab-chart-axis-title {
+  fill: #182b3a;
+  font-size: 16px;
+  font-weight: 600;
+}
+.lab-chart-reading {
+  fill: none;
+  stroke: #003d78;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.lab-chart-threshold {
+  stroke-width: 2;
+}
+.lab-chart-threshold-alarm {
+  stroke: #aa342e;
+  stroke-dasharray: 9 5;
+}
+.lab-chart-threshold-recovery {
+  stroke: #186448;
+  stroke-dasharray: 2 5;
+}
+.lab-chart-point {
+  fill: #003d78;
+  stroke: #fff;
+  stroke-width: 2;
+}
+.lab-chart-point-alarm {
+  fill: #aa342e;
+}
+.lab-chart-event-guide {
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: 0.7;
+}
+.lab-chart-event-alarm {
+  stroke: #aa342e;
+}
+.lab-chart-event-recovery {
+  stroke: #186448;
+}
+.lab-chart-event-label-alarm {
+  fill: #fff0ed;
+  stroke: #c7857e;
+}
+.lab-chart-event-label-recovery {
+  fill: #eaf5ef;
+  stroke: #7faa93;
+}
+.lab-chart-event-text {
+  fill: #182b3a;
+  font-size: 16px;
+  font-weight: 600;
+}
+.lab-chart-event-ring {
+  fill: none;
+  stroke-width: 2;
+}
+@media (max-width: 540px) {
+  .lab-visual {
+    padding: 14px;
+  }
+  .lab-visual-state-grid {
+    grid-template-columns: 1fr;
+  }
+  .lab-status-card {
+    padding: 14px;
+  }
+}
+@media print {
+  .lab-visual {
+    break-inside: avoid;
+  }
+  .lab-visual-chart-scroll {
+    overflow: visible;
+  }
+  .lab-visual-chart {
+    min-width: 0 !important;
+  }
+}

@@ -1,62 +1,450 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f7f6">
-  <meta name="description" content="基于数字孪生的废塑料热解炼油智能工厂教学系统。了解三维厂区、设备联动、工艺管网，以及涵盖对象建模、数据接入、状态联动和系统验证的28项实验任务。">
-  <meta property="og:title" content="基于数字孪生的废塑料热解炼油智能工厂教学系统">
-  <meta property="og:description" content="以废塑料热解炼油工厂为工程场景，开展对象建模、数据治理、三维联动与系统验证的实验教学。">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://waido.github.io/dongyue-digital-twin/assets/factory-panorama-hd.webp">
-  <title>基于数字孪生的废塑料热解炼油智能工厂教学系统</title>
-  <link rel="canonical" href="https://waido.github.io/dongyue-digital-twin/">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="styles.css?v=9">
-  <script src="app.js?v=7" defer></script>
-</head>
-<body>
-<a class="skip-link" href="#main">跳转至主要内容</a>
-<header class="site-header"><div class="header-inner container">
-  <a class="brand" href="#" aria-label="智能工厂教学系统首页"><svg class="brand-symbol" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 33V17l10 5V12l10 5V5h10v28H5Z" stroke="currentColor" stroke-width="1.8"/><path d="M10 28h3m7 0h3m7 0h1M30 10h1m-1 5h1" stroke="currentColor" stroke-width="1.8"/></svg><span><strong>智能工厂教学系统</strong><small>河海大学 · 数字孪生实验教学</small></span></a>
-  <button class="menu-toggle" aria-label="打开导航" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
-  <nav id="site-nav" aria-label="主导航"><a href="#process">工厂与工艺</a><a href="#platform">系统功能</a><a href="#education">实验教学</a><a href="#architecture">技术架构</a><button class="nav-cta" data-video-open>观看演示 <span aria-hidden="true">↗</span></button></nav>
-</div></header>
-<main id="main">
-<section class="hero" aria-labelledby="hero-title"><div class="container">
-  <div class="hero-intro"><div class="hero-title-block"><div class="eyebrow"><span class="section-dot"></span> 虚拟仿真实验教学</div><h1 id="hero-title"><span class="title-prefix">基于数字孪生的</span><span>废塑料热解炼油</span><span>智能工厂教学系统</span></h1></div><div class="hero-copy"><p>以废塑料热解炼油工厂为工程场景，<br class="desktop-break">把对象建模、数据接入与系统验证，<br class="desktop-break">带入同一套实验教学。</p><div class="hero-actions"><button class="button button-primary" data-video-open>观看系统演示 <span aria-hidden="true">▷</span></button><a class="text-link" href="#education">查看实验教学 <span aria-hidden="true">↓</span></a></div></div></div>
-  <figure class="hero-figure"><div class="hero-stage"><img class="hero-image" src="assets/factory-panorama-hd.webp" alt="东粤化学数字孪生系统的三维厂区全景，展示厂房、精馏塔、储罐和输送管网" width="1920" height="840" fetchpriority="high"><video class="hero-motion" id="hero-motion" muted loop playsinline preload="none" aria-label="三维厂区场景运镜视频节选"></video></div><figcaption><span><strong>东粤化学数字孪生工厂</strong><span class="caption-detail">厂区全景</span></span><button class="motion-toggle" id="motion-toggle" aria-label="播放场景运镜" aria-pressed="false"><span class="motion-icon" aria-hidden="true">▷</span><span class="motion-label">播放场景</span></button></figcaption></figure>
-  <div class="course-overview"><p>从认识工厂，到构建并验证<br>一套数字孪生原型。</p><dl class="course-facts"><div><dt>实验任务</dt><dd>28<span>项</span></dd></div><div><dt>教学安排</dt><dd>8<span>学时</span></dd></div><div><dt>学习阶段</dt><dd>4<span>个</span></dd></div></dl></div>
-</div></section>
-<section class="process-section section-dark" id="process" aria-labelledby="process-title"><div class="container">
-  <div class="section-heading"><div><div class="eyebrow">工厂与工艺</div><h2 id="process-title">认识一座热解炼油工厂</h2></div><p>从原料进厂到成品装车，沿着物料路线<br class="desktop-break">理解装置、设备与管网的连接关系。</p></div>
-  <ol class="process-route" aria-label="废塑料热解炼油工艺路线"><li><span>01</span><strong>原料进厂</strong><small>储存与输送</small></li><li><span>02</span><strong>破碎清洗</strong><small>原料预处理</small></li><li><span>03</span><strong>热解反应</strong><small>热解装置与工况</small></li><li><span>04</span><strong>精馏分离</strong><small>分离与介质输送</small></li><li><span>05</span><strong>成品出厂</strong><small>储罐与装车</small></li></ol>
-  <div class="process-views" role="tablist" aria-label="工艺系统画面"><button role="tab" id="view-flow" aria-controls="process-detail" aria-selected="true" data-process-view="flow">工艺流程</button><button role="tab" id="view-pipes" aria-controls="process-detail" aria-selected="false" tabindex="-1" data-process-view="pipes">介质管网</button><button role="tab" id="view-scada" aria-controls="process-detail" aria-selected="false" tabindex="-1" data-process-view="scada">二维 SCADA</button></div>
-  <div class="process-detail" id="process-detail" role="tabpanel" aria-labelledby="view-flow" tabindex="0"><div class="process-media"><button class="still-preview" data-image-open aria-label="放大查看工艺画面"><img id="process-img" src="assets/scene-flow.webp" alt="工艺管理中的流程、阀门管道配置和三维厂区同屏展示" width="1920" height="1080" loading="lazy"><span class="still-zoom" aria-hidden="true">放大 ↗</span></button><div class="media-caption"><span id="process-source">工艺管理界面</span></div></div><div class="process-copy"><span class="content-kicker">流程与空间</span><h3 id="process-detail-title">对照工艺流程，<br>查看设备位置</h3><p id="process-detail-copy">工艺管理界面将流程、阀门配置和三维场景组织在一起。选择流程中的设备，即可对照它在厂区中的位置与连接关系。</p><button class="text-link" id="process-video" data-video-open="process">观看工艺演示 <span aria-hidden="true">▷</span></button><div class="media-legend"><span>管网中的四类介质</span><ul><li><i class="raw"></i>原料液</li><li><i class="oil"></i>产品油</li><li><i class="steam"></i>蒸汽</li><li><i class="water"></i>冷却水</li></ul></div></div></div>
-</div></section>
-<section class="platform section-white" id="platform" aria-labelledby="platform-title"><div class="container">
-  <div class="section-heading"><div><div class="eyebrow">系统功能</div><h2 id="platform-title">围绕设备，查看场景与数据</h2></div><p>选择一个功能，查看对应界面，<br class="desktop-break">也可以直接播放相关操作。</p></div>
-  <div class="capability-tabs" role="tablist" aria-label="系统功能展示" aria-orientation="horizontal"><button role="tab" id="tab-overview" aria-controls="capability-panel" aria-selected="true" data-tab="overview"><span>01</span>设备定位</button><button role="tab" id="tab-process" aria-controls="capability-panel" aria-selected="false" tabindex="-1" data-tab="process"><span>02</span>介质管网</button><button role="tab" id="tab-data" aria-controls="capability-panel" aria-selected="false" tabindex="-1" data-tab="data"><span>03</span>趋势查询</button><button role="tab" id="tab-ai" aria-controls="capability-panel" aria-selected="false" tabindex="-1" data-tab="ai"><span>04</span>异常分析</button></div>
-  <div class="capability-panel" id="capability-panel" role="tabpanel" aria-labelledby="tab-overview" tabindex="0"><div class="capability-visual"><div class="capability-image"><img id="capability-img" src="assets/scene-devices.webp" alt="设备管理面板与三维厂区联动界面" width="1920" height="1080" loading="lazy"><button class="expand-image" id="expand-image" aria-label="放大查看当前系统界面">放大 ↗</button></div><div class="media-caption"><span id="capability-source">设备管理界面</span></div></div><div class="capability-copy"><span class="content-kicker" id="capability-kicker">设备与档案</span><h3 id="capability-title">从设备条目<br>定位到三维现场</h3><p id="capability-description">选择设备条目，相机聚焦到对应位置；点击三维设备，打开信息面板。空间位置与设备档案使用同一对象关联。</p><ul id="capability-list"><li>浏览厂区、车间与设备层级</li><li>查看设备信息和运行状态</li><li>验证面板与场景的双向定位</li></ul><button class="text-link" id="capability-video" data-video-open="devices">观看设备联动 <span aria-hidden="true">▷</span></button></div></div>
-</div></section>
-<section class="education-section" id="education" aria-labelledby="education-title"><div class="container">
-  <div class="section-heading"><div><div class="eyebrow">实验教学设计</div><h2 id="education-title">从对象建模到系统验收</h2></div><p>四个阶段，逐步完成一套数字孪生原型。<br class="desktop-break">每项任务都对应操作记录与验证结果。</p></div>
-  <div class="course-context"><div><span>适用学生</span><p>自动化、计算机、软件工程、智能制造等专业<br class="desktop-break">本科三、四年级学生</p></div><div><span>学习准备</span><p>具备程序设计、数据库、计算机网络<br class="desktop-break">与基础数据分析知识</p></div><div><span>实验组织</span><p>任务配置、故障注入、对照测试<br class="desktop-break">操作记录与实验报告</p></div></div>
-  <div class="learning-tabs" role="tablist" aria-label="实验教学阶段"><button role="tab" id="learning-tab-0" aria-controls="learning-panel-0" aria-selected="true" tabindex="0" data-learning="0"><span>01</span><strong>对象建模</strong><small>步骤 1–7</small></button><button role="tab" id="learning-tab-1" aria-controls="learning-panel-1" aria-selected="false" tabindex="-1" data-learning="1"><span>02</span><strong>数据接入</strong><small>步骤 8–14</small></button><button role="tab" id="learning-tab-2" aria-controls="learning-panel-2" aria-selected="false" tabindex="-1" data-learning="2"><span>03</span><strong>状态联动</strong><small>步骤 15–21</small></button><button role="tab" id="learning-tab-3" aria-controls="learning-panel-3" aria-selected="false" tabindex="-1" data-learning="3"><span>04</span><strong>验证交付</strong><small>步骤 22–28</small></button></div>
-  <div class="learning-panels"><div class="learning-panel" id="learning-panel-0" role="tabpanel" aria-labelledby="learning-tab-0" tabindex="0" ><div class="learning-panel-intro"><div><span class="content-kicker">阶段 1 · 2 学时</span><h3>需求分析与对象建模</h3></div><p>建立厂区、设备与测点的对应关系。先明确需要解决的问题，再组织资产、三维资源和数据字典。</p></div><table class="task-table"><caption class="sr-only">需求分析与对象建模的七项实验任务</caption><thead><tr><th scope="col">实验任务</th><th scope="col">目标要求</th><th scope="col">验证方式</th></tr></thead><tbody><tr><th scope="row"><span class="task-number">01</span>分解产业需求</th><td data-label="目标">提出对象、数据与AI需求</td><td data-label="验证方式">提交需求及验收条件，反馈缺项</td></tr><tr><th scope="row"><span class="task-number">02</span>设计系统架构</th><td data-label="目标">明确采集、孪生与AI边界</td><td data-label="验证方式">连接组件，检查依赖和隔离</td></tr><tr><th scope="row"><span class="task-number">03</span>构建资产层级</th><td data-label="目标">组织厂区、区域及设备</td><td data-label="验证方式">编辑父子关系，反馈循环引用</td></tr><tr><th scope="row"><span class="task-number">04</span>制定唯一编码</th><td data-label="目标">保证对象可追溯</td><td data-label="验证方式">配置编码，检测重复与冲突</td></tr><tr><th scope="row"><span class="task-number">05</span>定义测点字典</th><td data-label="目标">统一类型、单位与质量码</td><td data-label="验证方式">编辑字段，检查类型及量程</td></tr><tr><th scope="row"><span class="task-number">06</span>组织三维资源</th><td data-label="目标">建立设备层级及空间基准</td><td data-label="验证方式">调整层级与坐标，校验一致性</td></tr><tr><th scope="row"><span class="task-number">07</span>配置对象映射</th><td data-label="目标">关联资产、模型与数据源</td><td data-label="验证方式">绑定对象，检测漏配和错配</td></tr></tbody></table><div class="deliverable"><span>阶段成果</span><p>需求清单、系统架构图、资产与测点字典、对象映射表</p></div></div><div class="learning-panel" id="learning-panel-1" role="tabpanel" aria-labelledby="learning-tab-1" tabindex="0" hidden><div class="learning-panel-intro"><div><span class="content-kicker">阶段 2 · 2 学时</span><h3>数据接入与质量治理</h3></div><p>把数据接进来，也要验证它是否可靠。检查类型、单位、时间与质量，比较治理前后的结果。</p></div><table class="task-table"><caption class="sr-only">数据接入与质量治理的七项实验任务</caption><thead><tr><th scope="col">实验任务</th><th scope="col">目标要求</th><th scope="col">验证方式</th></tr></thead><tbody><tr><th scope="row"><span class="task-number">08</span>配置数据连接</th><td data-label="目标">选择授权数据源与读取方式</td><td data-label="验证方式">设置接口，测试认证和连通</td></tr><tr><th scope="row"><span class="task-number">09</span>解析样本字段</th><td data-label="目标">统一格式与单位</td><td data-label="验证方式">编辑解析映射，核对转换结果</td></tr><tr><th scope="row"><span class="task-number">10</span>设置采样订阅</th><td data-label="目标">配置更新周期和消息主题</td><td data-label="验证方式">修改策略，测量延迟及开销</td></tr><tr><th scope="row"><span class="task-number">11</span>校验时间与质量</th><td data-label="目标">识别乱序、缺失与冻结</td><td data-label="验证方式">标记样本，验证时间对齐</td></tr><tr><th scope="row"><span class="task-number">12</span>治理异常数据</th><td data-label="目标">设计去重及坏值处理规则</td><td data-label="验证方式">执行治理，比较前后结果</td></tr><tr><th scope="row"><span class="task-number">13</span>验证历史回放</th><td data-label="目标">保持对象及时间一致</td><td data-label="验证方式">选择窗口，核对曲线与事件</td></tr><tr><th scope="row"><span class="task-number">14</span>测试中断补传</th><td data-label="目标">检查恢复及去重效果</td><td data-label="验证方式">模拟断网重连，核对丢失与重复</td></tr></tbody></table><div class="deliverable"><span>阶段成果</span><p>数据连接与解析配置、质量规则、回放与中断恢复测试记录</p></div></div><div class="learning-panel" id="learning-panel-2" role="tabpanel" aria-labelledby="learning-tab-2" tabindex="0" hidden><div class="learning-panel-intro"><div><span class="content-kicker">阶段 3 · 2 学时</span><h3>三维映射与状态联动</h3></div><p>让同一设备在面板、场景与事件记录中保持一致。通过状态机、测试事件和操作记录检验联动。</p></div><table class="task-table"><caption class="sr-only">三维映射与状态联动的七项实验任务</caption><thead><tr><th scope="col">实验任务</th><th scope="col">目标要求</th><th scope="col">验证方式</th></tr></thead><tbody><tr><th scope="row"><span class="task-number">15</span>绑定三维状态</th><td data-label="目标">将数据驱动到材质及标签</td><td data-label="验证方式">调整绑定，检查显示反馈</td></tr><tr><th scope="row"><span class="task-number">16</span>构建双向定位</th><td data-label="目标">二维与三维指向同一对象</td><td data-label="验证方式">配置跳转，验证编码及读数</td></tr><tr><th scope="row"><span class="task-number">17</span>设计设备状态机</th><td data-label="目标">定义状态、事件与转换条件</td><td data-label="验证方式">编辑状态图，检查冲突和死路</td></tr><tr><th scope="row"><span class="task-number">18</span>配置事件规则</th><td data-label="目标">设定阈值、持续时间及恢复</td><td data-label="验证方式">提交规则，验证误触发与恢复</td></tr><tr><th scope="row"><span class="task-number">19</span>验证拒绝逻辑</th><td data-label="目标">检验前置条件及审计</td><td data-label="验证方式">发送不合法教学操作，核对拒绝记录</td></tr><tr><th scope="row"><span class="task-number">20</span>注入并定位事件</th><td data-label="目标">验证事件到对象的联动</td><td data-label="验证方式">发送测试事件，检查位置与时间</td></tr><tr><th scope="row"><span class="task-number">21</span>完成事件闭环</th><td data-label="目标">检验确认、复核及回放</td><td data-label="验证方式">补全处置记录，核对状态流转</td></tr></tbody></table><div class="deliverable"><span>阶段成果</span><p>三维绑定与状态配置、事件规则、双向定位和处置闭环测试记录</p></div></div><div class="learning-panel" id="learning-panel-3" role="tabpanel" aria-labelledby="learning-tab-3" tabindex="0" hidden><div class="learning-panel-intro"><div><span class="content-kicker">阶段 4 · 2 学时</span><h3>AI 赋能、系统验证与复盘</h3></div><p>为知识问答保留引用，为异常检测设置测试集。对照不同配置，完成验收并交付可复现的孪生原型。</p></div><table class="task-table"><caption class="sr-only">AI 赋能、系统验证与复盘的七项实验任务</caption><thead><tr><th scope="col">实验任务</th><th scope="col">目标要求</th><th scope="col">验证方式</th></tr></thead><tbody><tr><th scope="row"><span class="task-number">22</span>建设技术知识库</th><td data-label="目标">建立有授权和版本的索引</td><td data-label="验证方式">选文档、配置切分，核验检索</td></tr><tr><th scope="row"><span class="task-number">23</span>配置知识问答</th><td data-label="目标">建立检索与引用链路</td><td data-label="验证方式">调整检索参数，验证答案来源</td></tr><tr><th scope="row"><span class="task-number">24</span>评测异常检测</th><td data-label="目标">区分训练验证与测试数据</td><td data-label="验证方式">提交样本，核算查准率与召回率</td></tr><tr><th scope="row"><span class="task-number">25</span>比较AI配置</th><td data-label="目标">解释不同配置的效果差异</td><td data-label="验证方式">对照检索或检测参数，分析误差</td></tr><tr><th scope="row"><span class="task-number">26</span>测试可信控制</th><td data-label="目标">验证拒答、权限与人工确认</td><td data-label="验证方式">提交无证据及越权请求，检查拦截</td></tr><tr><th scope="row"><span class="task-number">27</span>执行系统验收</th><td data-label="目标">核对五类测试及版本证据</td><td data-label="验证方式">提交测试用例，修复失败项并复测</td></tr><tr><th scope="row"><span class="task-number">28</span>交付并复盘</th><td data-label="目标">形成可复现的孪生原型</td><td data-label="验证方式">导出配置与报告，说明迁移条件</td></tr></tbody></table><div class="deliverable"><span>阶段成果</span><p>知识库与评测结果、系统测试用例、原型配置、实验报告与改进记录</p></div></div></div>
-  <div class="assessment"><div><h3>用测试结果完成验收</h3><p>核对对象映射、同步一致性、状态反馈、<br class="desktop-break">AI 证据与权限隔离，保留配置和测试记录。</p></div><dl><div><dt>需求与架构</dt><dd>10<span>%</span></dd></div><div><dt>建模与数据</dt><dd>25<span>%</span></dd></div><div><dt>三维与联动</dt><dd>25<span>%</span></dd></div><div><dt>AI 与验证</dt><dd>20<span>%</span></dd></div><div><dt>报告与复盘</dt><dd>20<span>%</span></dd></div></dl></div>
-</div></section>
-<section class="mr-section section-white" aria-labelledby="mr-title"><div class="container mr-layout"><button class="mr-image still-preview" data-video-open="mr" aria-label="播放MR虚实交互演示"><img src="assets/mr-practice-hd.webp" alt="操作人员佩戴MR头戴设备，在校园三维场景中进行空间交互" width="1920" height="1080" loading="lazy"><span class="still-play" aria-hidden="true">▷</span></button><div class="mr-copy"><div class="eyebrow">沉浸式交互</div><h2 id="mr-title">把操作带入三维空间</h2><p>佩戴 MR 设备，通过手势与空间中的模型交互。演示记录了头戴设备操作和同步画面，展示平面界面之外的交互方式。</p><button class="text-link" data-video-open="mr">观看 MR 实操 <span aria-hidden="true">▷</span></button></div></div></section>
-<section class="architecture section-dark" id="architecture" aria-labelledby="architecture-title"><div class="container architecture-layout"><div class="architecture-intro"><div class="eyebrow">技术架构</div><h2 id="architecture-title">从现场信号<br>到三维交互</h2><p>边缘网关接入测点数据，业务服务组织设备与事件，Web 面板和三维场景呈现同一对象。</p><div class="architecture-diagram" aria-label="数据接入与呈现关系"><span>PLC · DCS · 传感器</span><i aria-hidden="true">↓</i><span>边缘网关 → 业务服务</span><i aria-hidden="true">↓</i><div><span>三维场景</span><span>Web 面板</span></div></div></div><div class="architecture-layers">
-<details open><summary><span class="layer-number">01</span><span><strong>三维交互层</strong><small>Unity 3D</small></span><span class="details-icon" aria-hidden="true">+</span></summary><div class="layer-content"><p>组织厂区、车间与设备模型，配置相机位置、设备聚焦和状态渲染。</p><button class="text-link" data-video-open="workshop">观看三维车间 <span aria-hidden="true">▷</span></button></div></details>
-<details><summary><span class="layer-number">02</span><span><strong>Web 可视化层</strong><small>Vue 3 · ECharts</small></span><span class="details-icon" aria-hidden="true">+</span></summary><div class="layer-content"><p>通过管理面板、历史曲线和统计图表查看设备数据，与三维场景同步定位。</p><button class="text-link" data-video-open="data">观看数据中心 <span aria-hidden="true">▷</span></button></div></details>
-<details><summary><span class="layer-number">03</span><span><strong>业务服务层</strong><small>Java 微服务</small></span><span class="details-icon" aria-hidden="true">+</span></summary><div class="layer-content"><p>组织设备、工艺、报警和用户权限，记录操作事件，为查询与追溯提供依据。</p><button class="text-link" data-video-open="operations">观看运维界面 <span aria-hidden="true">▷</span></button></div></details>
-<details><summary><span class="layer-number">04</span><span><strong>边缘接入层</strong><small>边缘网关 · 工业测点</small></span><span class="details-icon" aria-hidden="true">+</span></summary><div class="layer-content"><p>对接 PLC、DCS 与传感器，接入温度、压力、液位和电流等测点数据。</p><ul><li>现场设备与测点连接</li><li>信号采集与数据转发</li><li>统一送入业务服务与可视化层</li></ul></div></details>
-</div></div></section>
-<section class="demo-section section-white" id="demo" aria-labelledby="demo-title"><div class="container"><div class="section-heading"><div><div class="eyebrow">系统演示</div><h2 id="demo-title">完整观看，也可按功能浏览</h2></div><p>1080p 高清视频，保留原演示解说。<br class="desktop-break">选择下方画面，直接进入对应章节。</p></div><button class="video-preview" data-video-open aria-label="播放1080p高清系统演示视频，约5分16秒"><img src="assets/factory-panorama-hd.webp" alt="系统演示视频中的三维工厂全景" width="1920" height="840" loading="lazy"><span class="video-shade"></span><span class="play-circle"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4 12 8-12 8z" fill="currentColor"/></svg></span><span class="video-label"><strong>东粤化学数字孪生系统</strong><span>完整演示 · 05:16</span></span><span class="video-corner" aria-hidden="true">播放影片 ↗</span></button><div class="chapter-grid"><button class="chapter-card" data-video-open="devices" aria-label="播放设备定位与联动，从01:00开始"><span class="chapter-still"><img src="assets/scene-devices.webp" alt="" width="1920" height="1080" loading="lazy"><span class="chapter-time">01:00<span aria-hidden="true">▷</span></span></span><strong>设备定位与联动<span aria-hidden="true">↗</span></strong><span class="chapter-description">从设备条目进入三维现场</span></button><button class="chapter-card" data-video-open="alarms" aria-label="播放报警与操作记录，从01:55开始"><span class="chapter-still"><img src="assets/scene-alarms.webp" alt="" width="1920" height="1080" loading="lazy"><span class="chapter-time">01:55<span aria-hidden="true">▷</span></span></span><strong>报警与操作记录<span aria-hidden="true">↗</span></strong><span class="chapter-description">查看事件、处置与追溯</span></button><button class="chapter-card" data-video-open="data" aria-label="播放数据中心，从02:34开始"><span class="chapter-still"><img src="assets/scene-data.webp" alt="" width="1920" height="1080" loading="lazy"><span class="chapter-time">02:34<span aria-hidden="true">▷</span></span></span><strong>数据中心<span aria-hidden="true">↗</span></strong><span class="chapter-description">历史趋势与统计图表</span></button><button class="chapter-card" data-video-open="process" aria-label="播放工艺与介质管网，从03:13开始"><span class="chapter-still"><img src="assets/scene-pipes.webp" alt="" width="1920" height="1080" loading="lazy"><span class="chapter-time">03:13<span aria-hidden="true">▷</span></span></span><strong>工艺与介质管网<span aria-hidden="true">↗</span></strong><span class="chapter-description">流程、流向与二维监控</span></button><button class="chapter-card" data-video-open="ai" aria-label="播放智能分析，从03:55开始"><span class="chapter-still"><img src="assets/scene-ai.webp" alt="" width="1920" height="1080" loading="lazy"><span class="chapter-time">03:55<span aria-hidden="true">▷</span></span></span><strong>智能分析<span aria-hidden="true">↗</span></strong><span class="chapter-description">异常趋势与能耗建议</span></button><button class="chapter-card" data-video-open="mr" aria-label="播放MR 虚实交互，从04:38开始"><span class="chapter-still"><img src="assets/mr-practice-hd.webp" alt="" width="1920" height="1080" loading="lazy"><span class="chapter-time">04:38<span aria-hidden="true">▷</span></span></span><strong>MR 虚实交互<span aria-hidden="true">↗</span></strong><span class="chapter-description">头戴设备与空间交互</span></button></div></div></section>
-</main>
-<footer class="site-footer"><div class="container footer-inner"><div><span>河海大学</span><p>基于数字孪生的废塑料热解炼油<br>智能工厂教学系统</p></div><a class="back-top" href="#">返回顶部 <span aria-hidden="true">↑</span></a></div></footer>
-  <dialog class="video-dialog" id="video-dialog" aria-labelledby="video-dialog-title"><div class="dialog-top"><span id="video-dialog-title">东粤化学数字孪生平台 · 高清演示</span><button class="close-dialog" data-close-dialog aria-label="关闭视频">×</button></div><video id="demo-video" controls playsinline preload="none" poster="assets/video-poster-hd.webp"><source src="assets/platform-demo-hd.mp4" type="video/mp4">你的浏览器暂不支持视频播放，请<a href="assets/platform-demo-hd.mp4">打开演示视频</a>。</video><p class="video-error" role="alert" hidden>视频暂时未能加载。<button id="retry-video" type="button">重新播放</button>，或<a href="assets/platform-demo-hd.mp4" target="_blank" rel="noopener">直接打开视频</a>。</p><div role="group" class="video-chapters" aria-label="视频章节"><button data-video-chapter="full">从头播放</button><button data-video-chapter="devices">设备联动</button><button data-video-chapter="alarms">报警记录</button><button data-video-chapter="data">数据中心</button><button data-video-chapter="process">工艺管网</button><button data-video-chapter="ai">智能分析</button><button data-video-chapter="mr">MR 交互</button></div><p class="dialog-note" id="video-context">完整演示 · 05:16</p></dialog>
-  <dialog class="image-dialog" id="image-dialog" aria-label="平台界面大图"><div class="dialog-top"><span id="image-dialog-title">平台界面</span><button class="close-dialog" data-close-dialog aria-label="关闭大图">×</button></div><img id="expanded-image" src="assets/platform-overview.webp" alt="三维厂区总览与设备信息面板的关联展示"></dialog>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f7fa" />
+    <title>基于数字孪生的废塑料热解炼油智能工厂教学系统</title>
+    <meta
+      name="description"
+      content="河海大学数字孪生实验教学：通过对象建模、数据接入、状态联动和系统验证四个阶段，完成28项交互练习，记录结果并导出实验报告。"
+    />
+    <meta
+      property="og:title"
+      content="废塑料热解炼油智能工厂 · 数字孪生实验教学"
+    />
+    <meta
+      property="og:description"
+      content="学习原理，配置样例，运行检查，完成实验记录。"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://waido.github.io/dongyue-digital-twin/assets/factory-panorama-hd.webp"
+    />
+    <link
+      rel="canonical"
+      href="https://waido.github.io/dongyue-digital-twin/"
+    />
+    <link rel="icon" href="assets/hohai-emblem.jpg" />
+    <link rel="stylesheet" href="styles.css?v=10" />
+    <link rel="stylesheet" href="lab-visuals.css?v=1" />
+    <script src="lab-model.js?v=1" defer></script>
+    <script src="lab-data.js?v=1" defer></script>
+    <script src="lab-state.js?v=1" defer></script>
+    <script src="lab-evidence.js?v=1" defer></script>
+    <script src="lab-visuals.js?v=1" defer></script>
+    <script src="app.js?v=8" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#experiment">跳转到实验操作</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#guide" aria-label="河海大学数字孪生实验教学"
+          ><img
+            src="assets/hohai-emblem.jpg"
+            alt="河海大学校徽"
+            width="56"
+            height="56"
+          /><span
+            ><strong>河海大学</strong><span>数字孪生实验教学</span></span
+          ></a
+        >
+        <nav aria-label="主导航">
+          <a href="#guide">实验导学</a><a href="#experiment">实验操作</a
+          ><a href="#report">实验记录</a>
+        </nav>
+        <button class="header-progress" id="resume-button">
+          开始实验 <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="guide" id="guide" aria-labelledby="course-title">
+        <div class="container">
+          <div class="course-heading">
+            <div>
+              <p class="eyebrow">未来制造 · 综合设计实验</p>
+              <h1 id="course-title">
+                <span>基于数字孪生的</span>废塑料热解炼油<br />智能工厂教学系统
+              </h1>
+              <p class="course-intro">
+                建立设备与数据的对应关系，验证状态与事件联动，<br
+                  class="desktop-break"
+                />用检查结果完成一次数字孪生工程实验。
+              </p>
+              <div class="guide-actions">
+                <button class="primary-button" id="start-button">
+                  开始第一项任务 <span aria-hidden="true">→</span></button
+                ><button class="plain-button" data-video-open>
+                  观看操作导览 <span aria-hidden="true">▷</span>
+                </button>
+              </div>
+            </div>
+            <div class="course-context">
+              <figure>
+                <img
+                  src="assets/factory-panorama-hd.webp"
+                  alt="作为本实验工程背景的东粤化学数字孪生工厂"
+                  width="1920"
+                  height="840"
+                />
+                <figcaption>实验对象：废塑料热解炼油工厂</figcaption>
+              </figure>
+              <dl>
+                <div>
+                  <dt>教学安排</dt>
+                  <dd>8 学时</dd>
+                </div>
+                <div>
+                  <dt>学习阶段</dt>
+                  <dd>4 个</dd>
+                </div>
+                <div>
+                  <dt>交互练习</dt>
+                  <dd>28 项</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          <div class="learning-outcomes">
+            <div>
+              <span>01</span>
+              <p><strong>建立对象模型</strong>让资产、测点和场景一一对应</p>
+            </div>
+            <div>
+              <span>02</span>
+              <p><strong>验证数据链路</strong>解析、治理、回放与中断恢复</p>
+            </div>
+            <div>
+              <span>03</span>
+              <p><strong>配置状态联动</strong>检查事件、操作条件与权限</p>
+            </div>
+            <div>
+              <span>04</span>
+              <p><strong>形成实验报告</strong>评测结果、复测记录与迁移条件</p>
+            </div>
+          </div>
+          <details class="preparation">
+            <summary>
+              实验前准备 <span>适用学生、操作方法与保存方式</span>
+            </summary>
+            <div>
+              <p>
+                <strong>适用学生</strong
+                >自动化、计算机、软件工程、智能制造等专业本科高年级学生。建议具备程序设计、数据库、网络与基础数据分析知识。
+              </p>
+              <p>
+                <strong>操作方法</strong
+                >阅读任务和样例，修改配置后运行检查。根据反馈修正输入，并在实验记录中说明原因。所有练习可用键盘、鼠标或触屏完成。
+              </p>
+              <p>
+                <strong>教学环境</strong
+                >练习使用可重复的本地教学样例；视频帮助理解实际系统操作。参数用于理解软件逻辑，不作为工艺运行设置。
+              </p>
+              <p>
+                <strong>保存方式</strong
+                >输入和记录自动保存在当前浏览器，可导出进度文件继续学习。共用电脑上请使用各自的浏览器配置，并及时导出自己的记录。
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section
+        class="experiment"
+        id="experiment"
+        aria-labelledby="experiment-heading"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">学习 · 操作 · 检查 · 记录</p>
+              <h2 id="experiment-heading">实验操作</h2>
+            </div>
+            <div class="overall-progress">
+              <span id="progress-label">已通过 0 / 28 项练习</span
+              ><progress id="course-progress" value="0" max="28">0/28</progress>
+            </div>
+          </div>
+          <p class="save-status" id="save-status" role="status">
+            练习使用教学样例；进度自动保存在当前浏览器。
+          </p>
+          <button
+            class="directory-toggle"
+            id="directory-toggle"
+            aria-controls="task-directory"
+            aria-expanded="false"
+          >
+            实验目录 <span id="mobile-step-label">第 1 项，共 28 项</span
+            ><span aria-hidden="true">⌄</span>
+          </button>
+          <div class="lab-layout">
+            <aside
+              class="task-directory"
+              id="task-directory"
+              aria-label="实验目录"
+            >
+              <div class="directory-title">
+                <strong>学习路径</strong><span>每阶段 2 学时</span>
+              </div>
+              <nav id="task-navigation" aria-label="28项实验任务"></nav>
+              <a class="report-shortcut" href="#report"
+                >查看我的实验记录 <span aria-hidden="true">↗</span></a
+              >
+            </aside>
+            <article
+              class="task-panel"
+              id="task-panel"
+              aria-labelledby="task-title"
+            >
+              <div class="task-topline">
+                <span id="task-phase">阶段一 · 对象建模</span
+                ><span id="task-status" class="task-status">待完成</span>
+              </div>
+              <h2 id="task-title" tabindex="-1">正在加载实验任务</h2>
+              <p class="task-goal" id="task-goal"></p>
+              <div class="resource-bar">
+                <img
+                  id="task-image"
+                  src="assets/scene-devices.webp"
+                  alt="设备定位与信息面板"
+                  width="1920"
+                  height="1080"
+                />
+                <div>
+                  <span>操作示例</span
+                  ><strong id="resource-title">设备定位与信息面板</strong>
+                </div>
+                <button
+                  class="plain-button"
+                  id="resource-video"
+                  data-video-open="devices"
+                >
+                  观看 <span aria-hidden="true">▷</span></button
+                ><button class="plain-button" id="resource-image">
+                  大图 <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+              <p class="task-brief" id="task-brief"></p>
+              <details class="concept">
+                <summary>实验原理</summary>
+                <p id="task-concept"></p>
+              </details>
+              <div class="task-workspace">
+                <div class="sample-column">
+                  <div class="section-label">
+                    样例与约束 <span>教学数据</span>
+                  </div>
+                  <div id="task-samples"></div>
+                </div>
+                <form id="task-form" novalidate>
+                  <div class="section-label">配置与操作</div>
+                  <div id="task-fields"></div>
+                  <div class="run-actions">
+                    <button
+                      class="primary-button"
+                      type="submit"
+                      id="run-button"
+                    >
+                      运行检查 <span aria-hidden="true">→</span></button
+                    ><button
+                      class="plain-button"
+                      type="button"
+                      id="hint-button"
+                      aria-expanded="false"
+                      aria-controls="task-hint"
+                    >
+                      查看提示
+                    </button>
+                  </div>
+                  <p class="task-hint" id="task-hint" hidden></p>
+                </form>
+              </div>
+              <section
+                class="feedback"
+                id="task-feedback"
+                aria-labelledby="feedback-title"
+                hidden
+              >
+                <div role="status" aria-live="polite">
+                  <span class="feedback-label" id="feedback-label"></span>
+                  <h3 id="feedback-title"></h3>
+                </div>
+                <ul id="feedback-details"></ul>
+                <div id="feedback-output"></div>
+              </section>
+              <div class="observation">
+                <label for="task-note"
+                  >实验记录
+                  <span>记录修改原因、观察结果和待解决的问题</span></label
+                ><textarea
+                  id="task-note"
+                  rows="3"
+                  maxlength="6000"
+                  placeholder="例如：先前的配置产生了什么问题？修改后，哪一项检查结果发生了变化？"
+                ></textarea>
+                <p>输入自动保存，也会写入导出的实验报告。</p>
+              </div>
+              <div class="task-pagination">
+                <button id="previous-task" class="plain-button">
+                  ← 上一任务</button
+                ><span id="task-position">1 / 28</span
+                ><button id="next-task" class="secondary-button">
+                  下一任务 →
+                </button>
+              </div>
+            </article>
+          </div>
+          <noscript
+            ><p class="noscript">
+              请启用浏览器 JavaScript 后使用交互实验。操作示例视频仍可直接打开。
+            </p>
+            <a href="assets/platform-demo-hd.mp4">观看系统操作视频</a></noscript
+          >
+        </div>
+      </section>
+      <section
+        class="report-section"
+        id="report"
+        aria-labelledby="report-title"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">成果与复盘</p>
+              <h2 id="report-title">我的实验记录</h2>
+            </div>
+            <span class="report-count" id="report-count"
+              >0 项通过，28 项待完成</span
+            >
+          </div>
+          <p class="report-intro">
+            报告包含当前配置、检查反馈和个人记录。练习结果用于自查，教师依据成果、证据与论证质量完成评价。
+          </p>
+          <div class="stage-results" id="stage-results"></div>
+          <div class="report-actions">
+            <button class="primary-button" id="export-report">
+              导出实验报告 <span aria-hidden="true">↓</span></button
+            ><button class="secondary-button" id="export-progress">
+              备份学习进度</button
+            ><button class="plain-button" id="import-progress">
+              导入学习进度</button
+            ><input
+              type="file"
+              id="progress-file"
+              accept="application/json,.json"
+              hidden
+            />
+          </div>
+          <p class="transfer-status" id="transfer-status" role="status"></p>
+          <details class="record-details">
+            <summary>
+              查看各任务的检查记录 <span id="record-detail-count">28 项</span>
+            </summary>
+            <div class="table-scroll" id="record-table"></div>
+          </details>
+          <div class="evaluation">
+            <h3>评价依据</h3>
+            <dl>
+              <div>
+                <dt>需求与架构</dt>
+                <dd>10%</dd>
+              </div>
+              <div>
+                <dt>建模与数据</dt>
+                <dd>25%</dd>
+              </div>
+              <div>
+                <dt>三维与联动</dt>
+                <dd>25%</dd>
+              </div>
+              <div>
+                <dt>AI 与验证</dt>
+                <dd>20%</dd>
+              </div>
+              <div>
+                <dt>报告与复盘</dt>
+                <dd>20%</dd>
+              </div>
+            </dl>
+            <p>
+              保留配置与复测证据。总评达到 60
+              分，且关键安全测试全部通过，满足实验达成要求。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <div>
+          <img
+            src="assets/hohai-emblem.jpg"
+            alt="河海大学校徽"
+            width="48"
+            height="48"
+          />
+          <p>基于数字孪生的废塑料热解炼油<br />智能工厂教学系统</p>
+        </div>
+        <a href="#guide">返回导学 ↑</a>
+      </div>
+    </footer>
+    <dialog
+      class="video-dialog"
+      id="video-dialog"
+      aria-labelledby="video-dialog-title"
+    >
+      <div class="dialog-top">
+        <span id="video-dialog-title">东粤化学数字孪生平台 · 高清演示</span
+        ><button class="close-dialog" data-close-dialog aria-label="关闭视频">
+          ×
+        </button>
+      </div>
+      <video
+        id="demo-video"
+        controls
+        playsinline
+        preload="none"
+        poster="assets/video-poster-hd.webp"
+      >
+        <source src="assets/platform-demo-hd.mp4" type="video/mp4" />
+        你的浏览器暂不支持视频播放，请<a href="assets/platform-demo-hd.mp4"
+          >打开演示视频</a
+        >。
+      </video>
+      <p class="video-error" role="alert" hidden>
+        视频暂时未能加载。<button id="retry-video" type="button">
+          重新播放</button
+        >，或<a
+          href="assets/platform-demo-hd.mp4"
+          target="_blank"
+          rel="noopener"
+          >直接打开视频</a
+        >。
+      </p>
+      <div role="group" class="video-chapters" aria-label="视频章节">
+        <button data-video-chapter="full">从头播放</button
+        ><button data-video-chapter="devices">设备联动</button
+        ><button data-video-chapter="alarms">报警记录</button
+        ><button data-video-chapter="data">数据中心</button
+        ><button data-video-chapter="process">工艺管网</button
+        ><button data-video-chapter="ai">智能分析</button
+        ><button data-video-chapter="mr">MR 交互</button>
+      </div>
+      <p class="dialog-note" id="video-context">完整演示 · 05:16</p>
+    </dialog>
+    <dialog class="image-dialog" id="image-dialog" aria-label="平台界面大图">
+      <div class="dialog-top">
+        <span id="image-dialog-title">平台界面</span
+        ><button class="close-dialog" data-close-dialog aria-label="关闭大图">
+          ×
+        </button>
+      </div>
+      <img
+        id="expanded-image"
+        src="assets/platform-overview.webp"
+        alt="三维厂区总览与设备信息面板的关联展示"
+      />
+    </dialog>
+  </body>
 </html>
