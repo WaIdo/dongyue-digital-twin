@@ -8,16 +8,16 @@ if (pageAddress.searchParams.has("v")) {
 }
 
 const capabilities = {
-  overview: { chapter: "devices", source: "高清演示截图 · 01:15", action: "观看设备联动", image: "scene-devices.webp", alt: "三维厂区总览与设备信息面板的关联展示", kicker: "场景与对象", title: ["从厂区鸟瞰，", "定位设备。"], description: "以统一设备对象连接空间位置与业务数据。在三维场景中定位设备，在信息面板中查看状态，让现场与数据彼此对应。", items: ["厂区、装置、设备多层级浏览", "三维场景与 Web 面板双向联动", "设备定位与数字档案关联"] },
-  process: { chapter: "pipes", source: "高清演示截图 · 03:33", action: "观看管网流向", image: "scene-pipes.webp", alt: "三维场景中用颜色和动态流向呈现介质管网", kicker: "介质与管网", title: ["让管网里的流向，", "变得清晰可见。"], description: "将设备、管道和阀门组织在同一空间中，以颜色与动态流向展示不同介质的输送路径，连接工艺流程与三维场景。", items: ["原料液、产品油、蒸汽与冷却水分类呈现", "设备、管道、阀门的空间关联", "工艺流程与三维场景联动展示"] },
-  data: { chapter: "data", source: "高清演示截图 · 02:45", action: "观看数据中心", image: "scene-data.webp", alt: "数据中心界面中的历史趋势曲线、统计图表和三维设备", kicker: "监控与记录", title: ["让设备状态，", "沿时间展开。"], description: "在数据中心查看历史曲线和统计图表，将温度、压力、液位等趋势与三维设备关联，为运行分析与事件复盘提供上下文。", items: ["二维 SCADA 工艺组态与场景关联", "温度、压力、液位与电流趋势查询", "报警记录、确认处置与操作审计"] },
-  ai: { chapter: "ai", source: "高清演示截图 · 04:00", action: "观看分析演示", image: "scene-ai.webp", alt: "系统演示素材中的AI分析面板，包括异常趋势、预测维护与能耗建议", kicker: "智能分析 / 方案展示", title: ["从历史记录，", "探索未来趋势。"], description: "演示材料展示了异常趋势分析、预测性预警与能耗优化建议的应用方向，以数字空间支持策略验证与持续改进。", items: ["时间序列异常检测与趋势分析示意", "面向工况的能耗优化建议", "模型效果与生产收益尚未在本页验证"] }
+  overview: { chapter: "devices", source: "设备管理界面", action: "观看设备联动", image: "scene-devices.webp", alt: "设备管理面板与三维厂区联动界面", kicker: "设备与档案", title: ["从设备条目", "定位到三维现场"], description: "选择设备条目，相机聚焦到对应位置；点击三维设备，打开信息面板。空间位置与设备档案使用同一对象关联。", items: ["浏览厂区、车间与设备层级", "查看设备信息和运行状态", "验证面板与场景的双向定位"] },
+  process: { chapter: "pipes", source: "介质管网界面", action: "观看管网流向", image: "scene-pipes.webp", alt: "通过颜色和动态流向区分介质的三维管网界面", kicker: "管道与介质", title: ["沿设备连接", "查看介质的输送路径"], description: "在同一场景中查看设备、管道与阀门。颜色区分不同介质，流向动画说明输送方向，便于对照工艺连接和空间位置。", items: ["区分原料液、产品油、蒸汽与冷却水", "追踪管道、阀门与设备的连接", "对照工艺流程与三维管网"] },
+  data: { chapter: "data", source: "数据中心界面", action: "观看趋势查询", image: "scene-data.webp", alt: "数据中心的历史趋势曲线、统计图表与三维设备", kicker: "测点与记录", title: ["选定设备和时段", "对照历史趋势"], description: "选择设备和查询时段，比较温度、压力、液位与电流等测点曲线。结合事件记录，检查变化发生的时间和对应对象。", items: ["查询与叠加多路测点曲线", "查看聚合统计和运行记录", "结合报警事件进行复盘"] },
+  ai: { chapter: "ai", source: "智能分析界面", action: "观看分析演示", image: "scene-ai.webp", alt: "智能分析面板中的异常趋势、预测维护和能耗建议", kicker: "异常与分析", title: ["对照异常趋势", "查看分析依据"], description: "分析界面集中呈现异常趋势、预测维护和能耗建议。教学任务进一步要求核验数据与引用来源，对比不同配置下的误报、漏报与检索结果。", items: ["查看异常变化与相关测点", "对照预测维护和能耗建议", "用独立测试样本评估分析结果"] }
 };
 
 const processViews = {
-  flow: { image: "scene-flow.webp", alt: "工艺管理中的流程、阀门管道配置和三维厂区同屏展示", source: "高清演示截图 · 03:20", title: "在同一屏，查看流程与现场。", description: "工艺管理界面将工艺流程、阀门与管道配置、三维场景组织在一起，让工艺关系对应到厂区空间。", chapter: "process", action: "观看工艺演示" },
-  pipes: { image: "scene-pipes.webp", alt: "三维场景中用颜色和动态流向呈现介质管网", source: "高清演示截图 · 03:33", title: "沿着管线，看清介质流向。", description: "在三维场景中查看设备、管道与阀门的连接。管线以颜色区分介质，视频中的流向动画展示物料的输送方向。", chapter: "pipes", action: "观看管网流向" },
-  scada: { image: "scada.webp", alt: "功能演示材料中的二维SCADA流程图，展示设备与管线的连接关系", source: "功能演示材料 · 二维 SCADA 界面", title: "从二维监控，读懂设备连接。", description: "以传统工艺组态图呈现设备与管线关系。配合三维场景，从流程连接和空间位置两个角度理解同一套工艺。", chapter: "scada", action: "观看 SCADA 演示" }
+  flow: { image: "scene-flow.webp", alt: "工艺管理中的流程、阀门管道配置和三维厂区同屏展示", source: "工艺管理界面", title: "对照工艺流程，查看设备位置", description: "工艺管理界面将流程、阀门配置和三维场景组织在一起。选择流程中的设备，即可对照它在厂区中的位置与连接关系。", chapter: "process", action: "观看工艺演示" },
+  pipes: { image: "scene-pipes.webp", alt: "三维场景中以颜色和流向呈现介质管网", source: "介质管网界面", title: "沿着管线，追踪介质流向", description: "查看设备、管道和阀门之间的连接。管线颜色区分介质，流向动画展示物料的输送方向。", chapter: "pipes", action: "观看管网流向" },
+  scada: { image: "scada.webp", alt: "二维SCADA工艺组态图中的设备、管线与测点", source: "二维 SCADA 界面", title: "对照二维组态，理解工艺连接", description: "以工艺组态图呈现设备、管线与测点。在二维监控与三维场景之间，对照同一套工艺的流程连接和空间位置。", chapter: "scada", action: "观看 SCADA 演示" }
 };
 
 const videoChapters = {
@@ -174,7 +174,7 @@ function updateMotionControl() {
 }
 function syncHeroMotion() {
   if (motionWanted && sceneVisible && !document.hidden && !document.querySelector("dialog[open]")) {
-    if (!heroMotion.getAttribute("src")) heroMotion.src = "assets/hero-loop.mp4";
+    if (!heroMotion.getAttribute("src")) heroMotion.src = "assets/hero-factory-hd-loop.mp4";
     heroMotion.play().catch(updateMotionControl);
   } else heroMotion.pause();
 }
@@ -187,10 +187,15 @@ reducedMotion.addEventListener("change", event => { if (event.matches) { motionW
 if ("IntersectionObserver" in window) {
   new IntersectionObserver(entries => { sceneVisible = entries[0].isIntersecting; syncHeroMotion(); }, {threshold: .08}).observe(heroMotion);
 } else { sceneVisible = true; syncHeroMotion(); }
-const tabOrientation = window.matchMedia("(max-width: 900px)");
-function updateTabOrientation() { document.querySelector(".capability-tabs").setAttribute("aria-orientation", tabOrientation.matches ? "horizontal" : "vertical"); }
-tabOrientation.addEventListener("change", updateTabOrientation);
-updateTabOrientation();
+const learningTabs = [...document.querySelectorAll("[data-learning]")];
+wireTabs(learningTabs, button => {
+  learningTabs.forEach(tab => {
+    const selected = tab === button;
+    tab.setAttribute("aria-selected", String(selected));
+    tab.tabIndex = selected ? 0 : -1;
+    document.getElementById(tab.getAttribute("aria-controls")).hidden = !selected;
+  });
+});
 
 if ("IntersectionObserver" in window) {
   const links = [...navigation.querySelectorAll("a")];
