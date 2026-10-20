@@ -10,6 +10,14 @@
     );
   }
   const tasks = (window.LAB_TASKS || []).sort((a, b) => a.id - b.id);
+  const courseOutline = window.COURSE_OUTLINE;
+  const courseTasks = new Map(
+    (courseOutline?.tasks || []).map((task) => [task.id, task]),
+  );
+  tasks.forEach((task) => {
+    const courseTask = courseTasks.get(task.id);
+    if (courseTask) task.title = courseTask.title;
+  });
   const $ = (selector) => document.querySelector(selector);
   const el = (tag, text, className) => {
     const node = document.createElement(tag);
@@ -449,13 +457,33 @@
   function renderTask() {
     const task = tasks[state.activeTask - 1],
       phase = phases[task.stage];
+    const courseTask = courseTasks.get(task.id);
+    $("#task-course-meta").hidden = !courseTask;
+    $("#task-requirements").hidden = !courseTask;
+    if (courseTask) {
+      $("#task-course-meta").replaceChildren(
+        el("span", `建议操作 ${courseTask.minutes} 分钟`),
+        el("span", `步骤满分 ${courseTask.points} 分 · 教师评定`),
+      );
+      $("#course-task-goal").textContent = `课程要求：${courseTask.goal}`;
+      $("#course-task-rubric").replaceChildren(
+        ...courseTask.rubric.map((item) => el("li", item)),
+      );
+      $("#course-stage-deliverables").replaceChildren(
+        ...(courseOutline.stages[task.stage]?.deliverables || []).map((item) =>
+          el("li", item),
+        ),
+      );
+    }
     $("#task-phase").textContent = `阶段 ${task.stage + 1} · ${phase.title}`;
     $("#task-title").textContent =
       `${String(task.id).padStart(2, "0")}  ${task.title}`;
     $("#task-goal").textContent = task.goal;
     $("#task-brief").textContent = task.brief;
     $("#task-concept").textContent = task.concept;
-    $(".concept").open = false;
+    document.querySelectorAll(".concept").forEach((section) => {
+      section.open = false;
+    });
     $("#task-hint").hidden = true;
     $("#task-hint").textContent = task.hint;
     $("#hint-button").setAttribute("aria-expanded", "false");
@@ -624,14 +652,25 @@
       `当前通过：${tasks.filter((t) => status(t) === "passed").length}/28 项练习`,
       "",
       "本报告记录浏览器教学样例的操作、检查结果与学习者记录。论证质量及课程成绩由教师复核。",
+      "请在实验记录中保留至少两组配置、对照结果与复测依据；步骤满分是课程评价依据，不是本页自动评分。",
       "",
     ];
     tasks.forEach((task) => {
       const record = state.records[task.id];
+      const courseTask = courseTasks.get(task.id);
       lines.push(
         `## ${task.id}. ${task.title}`,
         `阶段：${phases[task.stage].title}`,
         `目标：${task.goal}`,
+        ...(courseTask
+          ? [
+              `课程要求：${courseTask.goal}`,
+              `建议操作用时：${courseTask.minutes} 分钟`,
+              `步骤满分：${courseTask.points} 分（教师评定）`,
+              ...courseTask.rubric.map((item) => `评分依据：${item}`),
+              `阶段成果：${courseOutline.stages[task.stage].deliverables.join("；")}`,
+            ]
+          : []),
         `当前状态：${labels[status(task)]}`,
         `检查次数：${record?.attempts || 0}`,
         "",

@@ -1982,3 +1982,101 @@ dialog::backdrop {
     transition: none !important;
   }
 }
+
+/* Course guidance and assessment criteria from the teaching syllabus. */
+.preparation + .preparation {
+  margin-top: 0;
+  border-top: 0;
+}
+.course-reading .knowledge-list,
+.course-reading .course-timing {
+  grid-column: 1 / -1;
+}
+.knowledge-list h3 {
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+.knowledge-list ol {
+  padding-left: 26px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 40px;
+  font-size: 18px;
+}
+.knowledge-list li::marker {
+  color: var(--blue);
+  font-variant-numeric: tabular-nums;
+}
+.task-course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 16px;
+}
+.task-requirements {
+  margin: 20px 0 24px;
+}
+.task-requirements > div {
+  padding: 0 20px 20px;
+  font-size: 18px;
+}
+.task-requirements h3 {
+  font-size: 18px;
+  margin: 20px 0 8px;
+}
+.task-requirements ul,
+.evidence-guide ol {
+  padding-left: 24px;
+}
+.task-requirements li + li,
+.evidence-guide li + li {
+  margin-top: 8px;
+}
+.task-requirements .assessment-note {
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 20px;
+}
+.evidence-guide {
+  margin: 26px 0;
+}
+.evidence-guide > div {
+  padding: 0 24px 24px;
+  font-size: 18px;
+}
+.evidence-guide > div > p {
+  margin-top: 20px;
+}
+@media (max-width: 700px) {
+  .knowledge-list ol {
+    grid-template-columns: 1fr;
+    font-size: 16px;
+  }
+  .task-requirements > div,
+  .evidence-guide > div {
+    padding: 0 16px 18px;
+    font-size: 16px;
+  }
+  .evidence-guide > summary {
+    flex-wrap: wrap;
+  }
+  .evidence-guide > summary > span {
+    width: 100%;
+    margin: 0;
+  }
+  .task-course-meta {
+    gap: 4px 16px;
+    font-size: 16px;
+  }
+}
+
+.preparation p {
+  font-size: 18px;
+}
+@media (max-width: 700px) {
+  .preparation p {
+    font-size: 16px;
+  }
+}
