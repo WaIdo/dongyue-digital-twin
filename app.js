@@ -19,6 +19,15 @@
     if (courseTask) task.title = courseTask.title;
   });
   const $ = (selector) => document.querySelector(selector);
+  const layoutObservers = new Map();
+  const pruneLayoutObservers = () => {
+    for (const [element, observer] of layoutObservers) {
+      if (!element.isConnected) {
+        observer.disconnect();
+        layoutObservers.delete(element);
+      }
+    }
+  };
   const el = (tag, text, className) => {
     const node = document.createElement(tag);
     if (text !== undefined) node.textContent = String(text);
@@ -213,12 +222,15 @@
     saveTimer = setTimeout(save, 250);
   }
   function table(data) {
+    const figure = el("figure", undefined, "data-table");
+    if (data.caption)
+      figure.append(el("figcaption", data.caption, "table-caption"));
     const wrapper = el("div", undefined, "table-scroll");
     wrapper.tabIndex = 0;
     wrapper.setAttribute("role", "region");
     wrapper.setAttribute("aria-label", data.caption || "教学数据表");
     const t = el("table");
-    if (data.caption) t.append(el("caption", data.caption));
+    t.setAttribute("aria-label", data.caption || "教学数据表");
     const head = el("thead"),
       hrow = el("tr");
     data.headers.forEach((s) => {
@@ -231,12 +243,37 @@
     const body = el("tbody");
     data.rows.forEach((row) => {
       const tr = el("tr");
-      row.forEach((cell) => tr.append(el("td", cell)));
+      row.forEach((cell) => {
+        const value = String(cell);
+        const td = el("td", value);
+        // Keep identifiers, timestamps and status codes intact. Descriptions
+        // still wrap at normal word boundaries instead of widening every table.
+        if (/^[A-Za-z0-9_.:/+-]+$/.test(value) && value.length <= 64)
+          td.className = "table-value";
+        else if (value.length > 32) td.className = "table-prose";
+        tr.append(td);
+      });
       body.append(tr);
     });
     t.append(body);
     wrapper.append(t);
-    return wrapper;
+    const hint = el("p", "左右滑动查看完整表格 →", "table-scroll-hint");
+    hint.hidden = true;
+    figure.append(wrapper, hint);
+    if (window.ResizeObserver) {
+      const observer = new window.ResizeObserver(() => {
+        const overflow = wrapper.scrollWidth > wrapper.clientWidth + 1;
+        hint.hidden = !overflow;
+        wrapper.tabIndex = overflow ? 0 : -1;
+        wrapper.setAttribute(
+          "aria-label",
+          (data.caption || "教学数据表") + (overflow ? "，可横向滚动" : ""),
+        );
+      });
+      observer.observe(wrapper);
+      layoutObservers.set(wrapper, observer);
+    }
+    return figure;
   }
   const labels = {
     pending: "待完成",
@@ -352,6 +389,7 @@
     };
     $("#record-table").replaceChildren(table(output));
     renderNavigation();
+    pruneLayoutObservers();
   }
   function renderFields(task) {
     const fields = $("#task-fields");
@@ -398,7 +436,14 @@
             });
         } else if (f.type === "textarea") {
           input = el("textarea");
-          input.rows = 4;
+          const structured = task.id !== 28;
+          input.rows = structured
+            ? Math.min(10, Math.max(6, values[f.key].split("\n").length + 1))
+            : 4;
+          if (structured) {
+            input.wrap = "off";
+            input.className = "structured-input";
+          }
           input.maxLength = 12000;
           input.spellcheck = false;
         } else {
@@ -414,6 +459,28 @@
         for (const key of ["min", "max", "step"])
           if (f[key] !== undefined) input.setAttribute(key, String(f[key]));
         group.append(input);
+        if (f.type === "select" && window.ResizeObserver) {
+          const detail = el("p", undefined, "selection-detail");
+          detail.hidden = true;
+          group.append(detail);
+          const measure = document.createElement("canvas").getContext("2d");
+          const showSelection = () => {
+            if (!input.isConnected || !measure) return;
+            const label = input.options[input.selectedIndex]?.textContent || "";
+            const style = getComputedStyle(input);
+            measure.font = style.font;
+            const available =
+              input.clientWidth -
+              parseFloat(style.paddingLeft) -
+              parseFloat(style.paddingRight);
+            detail.textContent = `当前选择：${label}`;
+            detail.hidden = measure.measureText(label).width <= available;
+          };
+          input.addEventListener("change", showSelection);
+          const observer = new window.ResizeObserver(showSelection);
+          observer.observe(input);
+          layoutObservers.set(input, observer);
+        }
       }
       fields.append(group);
     });
@@ -453,6 +520,7 @@
     const visual = window.renderLabVisual?.(task.id, result, draft(task));
     if (visual) $("#feedback-output").append(visual);
     if (result.output) $("#feedback-output").append(table(result.output));
+    pruneLayoutObservers();
   }
   function renderTask() {
     const task = tasks[state.activeTask - 1],

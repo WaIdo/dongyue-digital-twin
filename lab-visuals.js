@@ -280,9 +280,9 @@
       );
       chart.append(
         svgNode("rect", {
-          x: center - 49,
+          x: center - 56,
           y: py,
-          width: 98,
+          width: 112,
           height: 27,
           rx: 3,
           class: `lab-chart-event-label lab-chart-event-label-${kind}`,
